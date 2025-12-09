@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design Color Theory Lesson</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #020617; /* Slate 950 */
+        overflow: hidden;
+      }
+
+      /* Animated Aurora Background */
+      .aurora-bg {
+        background: radial-gradient(circle at 50% 50%, #1e1b4b, #020617), 
+                    linear-gradient(120deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+      }
+
+      /* Moving Orbs for Depth */
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.4;
+        animation: floatOrb 20s infinite ease-in-out alternate;
+        z-index: -1;
+      }
+      .orb-1 { top: 10%; left: 10%; width: 50vw; height: 50vw; background: #3b82f6; animation-duration: 25s; }
+      .orb-2 { bottom: 10%; right: 10%; width: 40vw; height: 40vw; background: #d946ef; animation-duration: 30s; }
+      .orb-3 { top: 40%; left: 40%; width: 30vw; height: 30vw; background: #06b6d4; animation-duration: 22s; }
+
+      @keyframes floatOrb {
+        0% { transform: translate(0, 0) scale(1); }
+        100% { transform: translate(30px, 50px) scale(1.1); }
+      }
+
+      /* Global Noise Texture for Glass Realism */
+      .noise-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      /* High Impact: Slam In Animation */
+      @keyframes slamIn {
+        0% { transform: scale(5); opacity: 0; filter: blur(20px); }
+        50% { transform: scale(1); opacity: 1; filter: blur(0); }
+        70% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+      }
+      .animate-slam-in {
+        animation: slamIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      }
+
+      /* High Impact: Text Shimmer (Neon Flow) */
+      @keyframes textShimmer {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 200% 50%; }
+      }
+      .animate-text-shimmer {
+        background-size: 200% auto;
+        animation: textShimmer 3s linear infinite;
+      }
+
+      /* Pop In for Badges */
+      @keyframes popIn {
+        0% { transform: scale(0); opacity: 0; }
+        70% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+      .animate-pop-in {
+        animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      }
+
+      /* Fast Float for dynamic elements */
+      @keyframes floatFast {
+        0% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-15px) rotate(2deg); }
+        100% { transform: translateY(0px) rotate(0deg); }
+      }
+      .animate-float-fast {
+        animation: floatFast 4s ease-in-out infinite;
+      }
+
+      /* Standard Float */
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      /* Subtle Pulse */
+      @keyframes subtlePulse {
+        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0.1); }
+        50% { transform: scale(1.02); box-shadow: 0 0 20px 0 rgba(255,255,255,0.2); }
+        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0.1); }
+      }
+      .animate-pulse-slow {
+        animation: subtlePulse 4s infinite;
+      }
+
+      /* Custom Scrollbar */
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: rgba(30, 41, 59, 0.5);
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(96, 165, 250, 0.5);
+        border-radius: 10px;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="text-slate-100 selection:bg-cyan-500/30 selection:text-cyan-100">
+    <div class="aurora-bg"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="noise-overlay"></div>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
